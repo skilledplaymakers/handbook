@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="tl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>EVENT HANDBOOK</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Rubik:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0f1724;
+      --card:#0b1220;
+      --muted:#98a0b3;
+      --accent1: linear-gradient(135deg,#ff7a18 0%,#af002d 50%,#320b86 100%);
+      --accent2: #0ea5a2;
+      --glass: rgba(255,255,255,0.03);
+      --radius:14px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: radial-gradient(1200px 600px at 10% 10%, rgba(14,165,162,0.06), transparent 8%),
+                  radial-gradient(900px 500px at 90% 90%, rgba(175,0,45,0.03), transparent 10%),
+                  var(--bg);
+      color: #e6eef8;
+      -webkit-font-smoothing:antialiased;
+      line-height:1.5;
+      padding:28px;
+    }
+
+    header.app-header{
+      display:flex;
+      gap:16px;
+      align-items:center;
+      margin-bottom:22px;
+    }
+    .logo{
+      width:64px;height:64px;border-radius:12px;
+      background:var(--accent1);
+      display:grid;place-items:center;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+      font-weight:700;color:white;
+      font-family:Rubik;
+      transform: rotate(-6deg);
+    }
+    .title{
+      display:flex;flex-direction:column;
+    }
+    .title h1{margin:0;font-size:20px;letter-spacing:0.3px}
+    .title p{margin:2px 0 0;color:var(--muted);font-size:13px}
+
+    main.container{
+      max-width:1100px;margin:0 auto;
+      display:grid;grid-template-columns: 320px 1fr; gap:20px;
+    }
+
+    /* Sidebar */
+    aside.sidebar{
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+      padding:18px;border-radius:var(--radius);
+      box-shadow: 0 6px 20px rgba(1,6,20,0.6);
+      position:sticky;top:28px;height:max-content;
+    }
+    .toc h3{margin:0 0 8px 0;font-size:14px}
+    .toc ul{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+    .toc a{
+      display:block;padding:8px 10px;border-radius:10px;text-decoration:none;color:var(--muted);
+      font-size:14px;
+    }
+    .toc a:hover{background:var(--glass);color:#fff}
+
+    /* Content area */
+    section.content{
+      background: linear-gradient(180deg, rgba(255,255,255,0.015), transparent);
+      padding:20px;border-radius:var(--radius);
+      box-shadow: 0 8px 30px rgba(2,6,20,0.6);
+    }
+
+    .section-card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
+      border-radius:12px;padding:16px;margin-bottom:14px;
+      border: 1px solid rgba(255,255,255,0.03);
+    }
+    .section-card h2{margin:0 0 8px 0;font-size:18px}
+    .meta{color:var(--muted);font-size:13px;margin-bottom:10px}
+
+    /* Accordion */
+    .accordion{
+      border-radius:10px;
+      overflow:hidden;
+    }
+    .acc-item{border-top:1px solid rgba(255,255,255,0.03)}
+    .acc-trigger{
+      display:flex;justify-content:space-between;align-items:center;padding:12px;
+      cursor:pointer;background:transparent;border:0;width:100%;
+      color:inherit;font-size:15px;
+    }
+    .acc-trigger:hover{background: rgba(255,255,255,0.02)}
+    .acc-panel{padding:0 12px 14px 12px;max-height:0;overflow:hidden;transition:max-height .28s ease,padding .28s;}
+    .acc-panel.open{padding:12px;max-height:1200px}
+
+    .list{margin:10px 0 0 0;padding-left:18px;color:#d8e5ff}
+    .list li{margin:6px 0}
+
+    /* small helper */
+    .badge{
+      display:inline-block;background:rgba(255,255,255,0.03);padding:6px 10px;border-radius:999px;font-size:13px;color:var(--muted);
+    }
+
+    /* footer */
+    footer{margin-top:14px;color:var(--muted);font-size:13px;text-align:center}
+
+    /* responsive */
+    @media (max-width:980px){
+      main.container{grid-template-columns: 1fr; padding-bottom:20px}
+      aside.sidebar{position:static}
+    }
+
+    /* print */
+    @media print{
+      body{background:white;color:#000}
+      header, footer, .toc {display:none}
+      .section-card{border:none;box-shadow:none;background:transparent}
+    }
+  </style>
+</head>
+<body>
+
+  <header class="app-header">
+    <div class="logo">TP</div>
+    <div class="title">
+      <h1>Tournament Guidelines & Rules</h1>
+      <p>Volleyball • Swimming • Aerobics/Zumba • Agawan Panyo • Kadang-Kadang</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <aside class="sidebar">
+      <div class="toc">
+        <h3>Table of contents</h3>
+        <ul>
+          <li><a href="#volleyball">Volleyball</a></li>
+          <li><a href="#swimming">Swimming</a></li>
+          <li><a href="#zumba">Aerobics / Zumba</a></li>
+          <li><a href="#agawan">Agawan Panyo</a></li>
+          <li><a href="#kadang">Kadang-Kadang</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <section class="content">
+      <!-- VOLLEYBALL -->
+      <article id="volleyball" class="section-card">
+        <h2>Volleyball</h2>
+        <div class="meta">Guidelines • Rules • Scoring</div>
+
+        <div class="accordion" id="volley-accordion">
+          <div class="acc-item">
+            <button class="acc-trigger" aria-expanded="false">
+              <span>Guidelines in Volleyball</span>
+              <span class="chev">+</span>
+            </button>
+            <div class="acc-panel">
+              <ul class="list">
+             <li>There are six competing teams, with two team representatives per program. Each team must have a minimum of 8 and a maximum of 12 players. Only 6 players from each team are allowed inside the court at a time.</li>
+             <li>All teams, consisting of their official team members, must arrive at the court at least 15 minutes before their scheduled game time.</li>
+             <li>All teams, consisting of their official team members, must arrive at the court at least 15 minutes before their scheduled game time.</li>
+             <li>The tournament format will follow a Single Elimination or Knock-out system.</li>
+             <li>Officials shall inspect players uniforms to ensure that opposing teams wear contrasting colors, jersey numbers are not duplicated, and no jewelry is worn. Assigned team colors must be strictly followed.
+</li>
+             <li>Each game in the qualifying round will consist of three sets. The first and second sets are played to 25 points, while the third set is played to 15 points. A team must win two sets to be consider the winner.</li>
+             <li>Championship matches will follow a best of five set. The first team to win three sets will be declared the champion. The first four sets are played to 25 points, and if the score is tied at two sets each, a fifth set will be played to 15 points. </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="acc-item">
+            <button class="acc-trigger" aria-expanded="false">
+              <span>Rules in Volleyball</span>
+              <span class="chev">+</span>
+            </button>
+            <div class="acc-panel">
+              <ul class="list">
+                <li>All participants must be registered representatives of their respective programs (Bachelor of Science in Computer Science, Bachelor of Science in Information Systems in collaboration with Associate in Computer Technology, and Bachelor of Library and Information Science). Teams with unregistered players will be disqualified.</li>
+                <li>If the game is tied at 24-24, or 14-14 in the fifth set, the set continues till one team builds a two-point lead over the other.</li>
+                <li>Each rally is played for a point and the team that wins the rally and scores a point gets to serve for the next point.
+</li>
+                <li>All officials and players are required to report to the court at least 15 minutes before the scheduled game time. Failure to appear within this time frame will result in forfeiture of the game. </li>
+                <li>Any form of unsportsmanship such as disrespectful behavior, verbal abuse, taunting, physical aggression, or refusal to follow instructions towards team members, opponents, officials, or the organizing committee will result in immediate ejection from the current game and/or suspension for the next game.</li>
+                <li>The serve must be made from behind the end line and the server may not step on or over the line until after making contact with the ball.</li>
+                <li>When a team gains the right to serve, all players must rotate one position clockwise before serving. Failure to rotate correctly will result in a rotation violation.</li>
+                <li>Players are not allowed to scoop, hold, or lift the ball, and must avoid touching the net at any time. </li>
+                <li>A player must not touch the ball twice in a row, except when making consecutive contacts during blocking action.</li>
+                <li>When two players contact the ball simultaneously during receiving, it is counted as two separate hits.</li>
+                <li>Teams are allowed a maximum of three consecutive touches. A single player may not touch the ball twice in succession. After the third touch, the ball must be sent over to the opponent’s court. </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="acc-item">
+            <button class="acc-trigger" aria-expanded="false">
+              <span>Scoring in Volleyball</span>
+              <span class="chev">+</span>
+            </button>
+            <div class="acc-panel">
+              <ul class="list">
+                <li>Uses the rally point system, where a point is awarded on every rally regardless of which team served. </li>
+                <li>A set is won by the first team to reach 25 points with at least a 2-point lead. If the score reaches 24–24, play continues until one team leads by two points. </li>
+                <li>Matches are played in a best-of-three or best-of-five sets, with the deciding third or fifth set played to 15 points, also requiring a 2-point lead.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- SWIMMING -->
+      <article id="swimming" class="section-card">
+        <h2>Swimming</h2>
+        <div class="meta">Guidelines • Rules • Categories</div>
+
+        <div class="accordion" id="swim-accordion">
+          <div class="acc-item">
+            <button class="acc-trigger" aria-expanded="false"><span>Guidelines for Swimming</span><span class="chev">+</span></button>
+            <div class="acc-panel">
+              <ul class="list">
+                <li>Each program must have two male and one female representative in every category.</li>
+                <li>The tournament format will follow a single-elimination or knockout System.</li>
+                <li>The teams should arrive 15 minutes before the start of the tournament.</li>
+                <li>Upon arrival, the teams will be  given a designated area where they can stay for the whole duration of the tournament (Tables and Chairs near the swimming grounds)</li>
+                <li>All races are held in a 30-meter pool.</li>
+                <li>There are three swimming categories, which are Freestyle 30m, Backstroke 30m, and Breaststroke 30m.</li>
+                <li>Each team will be given designated lanes where they will swim.</li>
+                <li>Swimmers' swimming caps should follow the color of their team.</li>
+                <li>Timers will be provided. one is to one ratio to monitor the exact finish time of the swimmer.</li>
+                <li>A warm-up will be provided by the Tournament officiators.</li>
+                <li>The referee signals with three whistle blows:
+
+-Step onto the starting block (or poolside).
+-Enter the water and return to the wall.
+-Begin gliding and stroking.</li>
+                  <li>All front and backstroke races must begin in the water.</li>
+                  <li>Diving is strictly prohibited for safety reasons.</li>
+                  <li>Swimmers must finish in the same lane they started in.</li>
+                  <li>Pulling on lane ropes is not allowed.</li>
+                  <li>Proper swimming attire is required in compliance with PE Department rules.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="acc-item">
+            <button class="acc-trigger" aria-expanded="false"><span>Rules in Swimming</span><span class="chev">+</span></button>
+            <div class="acc-panel">
+              <ul class="list">
+                <li>A false start, defined as leaving the starting platform before the start signal, shall result in immediate disqualification.</li>
+                <li>Failure to conduct/participate in warm-up will result to disqualification</li>
+                <li>Unsportsmanlike conduct by swimmers, teams, or officials will lead to suspension or ejection. (e.g, bumping, pulling, kicking other players)</li>
+                <li>Any swimmer obstructing or interfering with another will be disqualified.</li>
+                <li>Improper turns will result in disqualification. Turn judges must inform the starter judge for the decision to be valid.</li>
+                <li>Devices that enhance speed, buoyancy, or endurance (e.g., fins, paddles) are prohibited.</li>
+                <li>Criteria/Finishes
+
+In Freestyle, the finish shall be executed on the front, with one hand making contact with the wall.
+
+<p>In Backstroke, the finish shall be made while the swimmer remains on the back, with at least one hand contacting the wall.</p>
+<p>In Breaststroke, the finish shall be executed with both hands touching the wall simultaneously and on the same horizontal plane.</p>
+
+<li>Note: Failure to follow these rules will result in disqualification.</li>
+
+In the qualifying match, swimmers must complete 30 meters according to their category.
+
+<p>In the final match, swimmers must complete 60 meters according to their category.</p>
+
+<p>The players with the fastest times in the 30-meter qualifying match will advance to the finals.</p>
+
+<p>The player with the fastest time in the 60-meter final will be declared the champion.</p>
+</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- ZUMBA -->
+      <article id="zumba" class="section-card">
+        <h2>Aerobics / Zumba</h2>
+        <div class="meta">History • Guidelines • Rules • Judging Criteria</div>
+
+        <div class="accordion" id="zumba-accordion">
+          <div class="acc-item">
+            <button class="acc-trigger" aria-expanded="false"><span>About & Purpose</span><span class="chev">+</span></button>
+            <div class="acc-panel">
+              <p style="color:var(--muted);margin:6px 0 0 0">Aerobics—rhythmic exercise for cardiovascular health. Zumba—dance-fitness combining Latin/international moves for fun & stamina.</p>
+            </div>
+          </div>
+
+          <div class="acc-item">
+            <button class="acc-trigger" aria-expanded="false"><span>Guidelines</span><span class="chev">+</span></button>
+            <div class="acc-panel">
+              <ul class="list">
+                <li>One group entry per team, 15–30 members.</li>
+                <li>Wear comfortable workout attire & rubber shoes; outfits encouraged to match team color.</li>
+                <li>Participants must be physically fit; props allowed if safe.</li>
+                <li>Bring own water. Warm-up & cool-down required.</li>
+                <li>Observe sportsmanship & punctuality.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="acc-item">
+            <button class="acc-trigger" aria-expanded="false"><span>Rules & Judging</span><span class="chev">+</span></button>
+            <div class="acc-panel">
+              <ul class="list">
+                <li>Only registered participants allowed. Late teams: 5-point deduction or denied performance.</li>
+                <li>Routine duration: 15–20 minutes (including entrance/exit). ±1 minute = 3-point deduction per minute.</li>
+                <li>Music must be school-appropriate and pre-submitted.</li>
+                <li>Stay within performance area. Dangerous stunts prohibited (immediate disqualification).</li>
+                <li>Judging criteria:
+                  <ul style="margin-top:6px;padding-left:16px;color:#cfe2ff">
+                    <li>Energy, Endurance & Expression — 40%</li>
+                    <li>Execution, Form & Synchronization — 35%</li>
+                    <li>Creativity & Choreography — 15%</li>
+                    <li>Overall Impact — 10%</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- AGAWAN PANYO -->
+      <article id="agawan" class="section-card">
+        <h2>Agawan Panyo</h2>
+        <div class="meta">Guidelines • Safety • Violations • Scoring</div>
+
+        <div class="accordion" id="agawan-accordion">
+          <div class="acc-item">
+            <button class="acc-trigger" aria-expanded="false"><span>Guidelines</span><span class="chev">+</span></button>
+            <div class="acc-panel">
+              <ul class="list">
+                <li>6 teams; each team 8–12 players.</li>
+                <li>Players move only kapag tinawag; return to line after turn.</li>
+                <li>Panyo placed clearly sa center; wear comfortable clothing & running shoes.</li>
+                <li>Good sportsmanship required.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="acc-item">
+            <button class="acc-trigger" aria-expanded="false"><span>Safety Rules & Violations</span><span class="chev">+</span></button>
+            <div class="acc-panel">
+              <ul class="list">
+                <li>No pushing, tripping, or violent contact — disqualification.</li>
+                <li>Tags = light taps only. 1st offense = warning; repeats = 1-point deduction.</li>
+                <li>Leaving the line early = 1-point deduction. Grabbing panyo out of turn = 1-point deduction.</li>
+                <li>Physical aggression or disrespect => immediate disqualification.</li>
+                <li>Referee/facilitator decisions final.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="acc-item">
+            <button class="acc-trigger" aria-expanded="false"><span>Scoring & Winning</span><span class="chev">+</span></button>
+            <div class="acc-panel">
+              <ul class="list">
+                <li>Single-elimination format (may lucky draw advantage sa semis kung kailangan).</li>
+                <li>1 point kapag nakakuha ng panyo at nakabalik nang ligtas.</li>
+                <li>If both tagged or foul => no points. Rule violations => -1 point.</li>
+                <li>Team to 15 points first = winner.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- KADANG-KADANG -->
+      <article id="kadang" class="section-card">
+        <h2>Kadang-Kadang</h2>
+        <div class="meta">Guidelines • Rules • Rounds</div>
+
+        <div class="accordion" id="kadang-accordion">
+          <div class="acc-item">
+            <button class="acc-trigger" aria-expanded="false"><span>General Guidelines</span><span class="chev">+</span></button>
+            <div class="acc-panel">
+              <ul class="list">
+                <li>Teams arrive 15 minutes before start. Designate 1 leader per team.</li>
+                <li>Players line up. Each player uses coconut shell stilts to walk to mark and back, tap next player.</li>
+                <li>First team with all members completed = winner.</li>
+                <li>Replacement stilts provided if damaged; player restarts after replacement.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="acc-item">
+            <button class="acc-trigger" aria-expanded="false"><span>Rules & Tournament Format</span><span class="chev">+</span></button>
+            <div class="acc-panel">
+              <ul class="list">
+                <li>6 competing teams (2 reps per program). Each team 4–6 players; 4 play at a time in area.</li>
+                <li>Players wear comfortable clothes; barefoot; gloves for rope protection if needed.</li>
+                <li>Max 5 falls/errors; exceeding = automatic loss.</li>
+                <li>Tournament: Single-elimination (Round 1 elimination, Round 2 semis with one bye, Round 3 championship).</li>
+                <li>All players must be registered representatives of their programs.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <footer>
+        <div>Kung gusto mo, pwede kong gawing printable PDF o i-convert sa poster layout — sabihan mo lang ako kung anong format.</div>
+      </footer>
+    </section>
+  </main>
+
+  <script>
+    // Simple accordion
+    document.querySelectorAll('.acc-trigger').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const panel = btn.nextElementSibling;
+        const open = panel.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        btn.querySelector('.chev').textContent = open ? '−' : '+';
+
+        // optional: close siblings in same accordion container
+        const parent = btn.closest('.accordion');
+        if(parent){
+          parent.querySelectorAll('.acc-panel').forEach(p=>{
+            if(p !== panel){ p.classList.remove('open'); p.previousElementSibling.setAttribute('aria-expanded','false'); p.previousElementSibling.querySelector('.chev').textContent = '+'; }
+          });
+        }
+      });
+    });
+
+    // Smooth anchor scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if(el){
+          e.preventDefault();
+          el.scrollIntoView({behavior:'smooth', block:'start'});
+          // open first accordion in that section (if exists)
+          const firstTrigger = el.querySelector('.acc-trigger');
+          if(firstTrigger && firstTrigger.getAttribute('aria-expanded') === 'false'){
+            firstTrigger.click();
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>
